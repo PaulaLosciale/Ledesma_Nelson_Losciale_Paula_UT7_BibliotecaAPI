@@ -47,11 +47,6 @@ public class LibroController {
             @RequestParam(required = false) String sortBy,
             @RequestParam(required = false) String order) {
         
-        List<Libro> libros = libroService.findByFilters(titulo, anio);
-        
-        // Implementar lógica de ordenación aquí si es necesario
-        // (en una implementación real usarías Sort de Spring Data)
-        
-        return libros;
+        return libroService.findByFilters(titulo, anio, sortBy, order);
     }
 }

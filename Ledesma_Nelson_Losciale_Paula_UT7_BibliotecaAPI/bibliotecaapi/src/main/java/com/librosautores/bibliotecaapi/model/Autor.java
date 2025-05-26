@@ -1,6 +1,7 @@
 package com.librosautores.bibliotecaapi.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -9,7 +10,9 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
+    
     private String nacionalidad;
     
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)

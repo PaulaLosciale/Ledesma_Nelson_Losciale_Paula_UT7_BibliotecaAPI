@@ -1,10 +1,13 @@
 package com.librosautores.bibliotecaapi.service;
-import java.util.List;
-import java.util.Optional;
+
+import com.librosautores.bibliotecaapi.model.Autor;
+import com.librosautores.bibliotecaapi.model.Libro;
+import com.librosautores.bibliotecaapi.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.librosautores.bibliotecaapi.model.Autor;
-import com.librosautores.bibliotecaapi.repository.AutorRepository;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AutorService {
@@ -21,5 +24,10 @@ public class AutorService {
     
     public Autor save(Autor autor) {
         return autorRepository.save(autor);
+    }
+    
+    public List<Libro> findLibrosByAutorId(Long autorId) {
+        Optional<Autor> autor = autorRepository.findById(autorId);
+        return autor.map(Autor::getLibros).orElse(null);
     }
 }

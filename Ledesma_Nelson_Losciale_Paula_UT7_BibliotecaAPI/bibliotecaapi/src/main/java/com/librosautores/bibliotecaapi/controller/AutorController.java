@@ -1,6 +1,7 @@
 package com.librosautores.bibliotecaapi.controller;
 
 import com.librosautores.bibliotecaapi.model.Autor;
+import com.librosautores.bibliotecaapi.model.Libro;
 import com.librosautores.bibliotecaapi.service.AutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,11 @@ public class AutorController {
     @GetMapping("/{id}")
     public Optional<Autor> getAutorById(@PathVariable Long id) {
         return autorService.findById(id);
+    }
+
+    @GetMapping("/{id}/libros")
+    public List<Libro> getLibrosByAutor(@PathVariable Long id) {
+        return autorService.findLibrosByAutorId(id);
     }
 
     @PostMapping
