@@ -11,7 +11,6 @@ public interface LibroRepository extends JpaRepository<Libro, Long> {
     List<Libro> findByAnioPublicacion(Integer anioPublicacion);
     List<Libro> findByTituloContainingAndAnioPublicacion(String titulo, Integer anioPublicacion);
     
-    // Métodos para ordenación
     List<Libro> findAllByOrderByTituloAsc();
     List<Libro> findAllByOrderByTituloDesc();
     List<Libro> findAllByOrderByAnioPublicacionAsc();
